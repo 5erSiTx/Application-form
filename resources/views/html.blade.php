@@ -1,146 +1,154 @@
-<!-- index.html -->
 <!doctype html>
 <html lang="th">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>แบบฟอร์มสมัคร</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-        :root{
-            --bg:#f3f6fb;
-            --card:#ffffff;
-            --accent:#4f46e5;
-            --muted:#6b7280;
-            --radius:14px;
-            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>แบบฟอร์มสมัคร (Bootstrap)</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        :root {
+            --bs-body-bg: #f3f6fb;
+            --bs-card-bg: #ffffff;
+            --bs-primary: #4f46e5;
+            --bs-border-radius: 14px;
         }
-
-        *{box-sizing:border-box}
-        body{
-            margin:0;
-            min-height:100vh;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            background:linear-gradient(180deg,var(--bg),#e9f0ff);
-            padding:32px;
-            color:#111827;
+        body {
+            background: linear-gradient(180deg, var(--bs-body-bg), #e9f0ff);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem; /* Use Bootstrap spacing utility */
         }
-
-        .container{
-            width:100%;
-            max-width:900px;
-            background:var(--card);
-            border-radius:var(--radius);
-            box-shadow:0 10px 30px rgba(20,25,40,0.08);
-            padding:28px;
+        .container-custom {
+            width: 100%;
+            max-width: 900px;
+            background: var(--bs-card-bg);
+            border-radius: var(--bs-border-radius);
+            box-shadow: 0 10px 30px rgba(20, 25, 40, 0.08);
+            padding: 28px;
         }
-
-        h1{font-size:20px;margin:0 0 8px}
-        p.lead{margin:0 0 20px;color:var(--muted);font-size:14px}
-
-        form{
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:16px 20px;
+        /* Custom styling for the checkbox grid to match the original look */
+        .checkbox-grid .form-check-label {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            background: #f8fafc;
+            border: 1px solid #eef2ff;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 0; /* Override default margin */
+            cursor: pointer;
         }
-
-        label{display:block;font-size:13px;margin-bottom:6px;color:#111827}
-        .field{display:flex;flex-direction:column}
-
-        input[type=text], input[type=date], input[type=file], textarea, select, input[type=color]{
-            padding:10px 12px;
-            border:1px solid #e6e9ef;
-            border-radius:10px;
-            font-size:14px;
-        }
-
-        textarea{min-height:96px;resize:vertical}
-        .full{grid-column:1/-1}
-
-        .gender-row{display:flex;gap:12px;align-items:center}
-        .checkbox-grid{display:flex;flex-wrap:wrap;gap:8px}
-        .checkbox-grid label{display:flex;gap:8px;align-items:center;background:#f8fafc;border:1px solid #eef2ff;padding:8px 10px;border-radius:8px;font-size:13px}
-
-        .controls{display:flex;gap:10px;justify-content:flex-end;grid-column:1/-1;margin-top:6px}
-        button{padding:10px 16px;border-radius:10px;border:0;font-weight:600;cursor:pointer}
-        button.save{background:var(--accent);color:white}
-        button.reset{background:#fff;border:1px solid #d1d5db;color:#374151}
-
-        .consent{display:flex;gap:10px;align-items:center}
-
-        @media(max-width:760px){form{grid-template-columns:1fr;} .controls{justify-content:stretch}}
-
     </style>
 </head>
 <body>
-  <div class="container">
-    <h1>แบบฟอร์มสมัคร</h1>
-    <p class="lead">กรุณากรอกข้อมูลให้ครบถ้วน เพื่อใช้ในการติดต่อกลับ</p>
+    <div class="container-custom">
+        <h1 class="mb-1">แบบฟอร์มสมัคร</h1>
+        <p class="lead text-muted mb-4" style="font-size: 14px;">กรุณากรอกข้อมูลให้ครบถ้วน เพื่อใช้ในการติดต่อกลับ</p>
 
-    <form action="#" method="post" enctype="multipart/form-data" novalidate>
-      <div class="field">
-        <label for="fname">ชื่อ *</label>
-        <input id="fname" name="first_name" type="text" placeholder="เช่น สมชาย" required>
-      </div>
+        <form action="#" method="post" enctype="multipart/form-data" novalidate>
+            <div class="row g-3 g-md-4">
+                
+                <div class="col-12 col-md-6">
+                    <label for="fname" class="form-label">ชื่อ *</label>
+                    <input id="fname" name="first_name" type="text" class="form-control" placeholder="เช่น สมชาย" required>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label for="lname" class="form-label">สกุล *</label>
+                    <input id="lname" name="last_name" type="text" class="form-control" placeholder="เช่น ใจดี" required>
+                </div>
 
-      <div class="field">
-        <label for="lname">สกุล *</label>
-        <input id="lname" name="last_name" type="text" placeholder="เช่น ใจดี" required>
-      </div>
+                <div class="col-12 col-md-6">
+                    <label for="dob" class="form-label">วันเดือนปีเกิด</label>
+                    <input id="dob" name="dob" type="date" class="form-control">
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label d-block">เพศ</label>
+                    <div class="d-flex gap-3 align-items-center">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male">
+                            <label class="form-check-label" for="genderMale">ชาย</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="female">
+                            <label class="form-check-label" for="genderFemale">หญิง</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="genderOther" value="other">
+                            <label class="form-check-label" for="genderOther">อื่นๆ</label>
+                        </div>
+                    </div>
+                </div>
 
-      <div class="field">
-        <label for="dob">วันเดือนปีเกิด</label>
-        <input id="dob" name="dob" type="date">
-      </div>
+                <div class="col-12 col-md-6">
+                    <label for="photo" class="form-label">รูป (อัปโหลดภาพ)</label>
+                    <input id="photo" name="photo" type="file" class="form-control" accept="image/*">
+                </div>
 
-      <div class="field">
-        <label>เพศ</label>
-        <div class="gender-row">
-          <label><input type="radio" name="gender" value="male"> ชาย</label>
-          <label><input type="radio" name="gender" value="female"> หญิง</label>
-          <label><input type="radio" name="gender" value="other"> อื่นๆ</label>
-        </div>
-      </div>
+                <div class="col-12">
+                    <label for="address" class="form-label">ที่อยู่</label>
+                    <textarea id="address" name="address" class="form-control" placeholder="บ้านเลขที่ / หมู่ / ตำบล / อำเภอ / จังหวัด"></textarea>
+                </div>
 
-      <div class="field">
-        <label for="photo">รูป (อัปโหลดภาพ)</label>
-        <input id="photo" name="photo" type="file" accept="image/*">
-      </div>
+                <div class="col-12 col-md-6">
+                    <label for="favcolor" class="form-label">สีที่ชอบ</label>
+                    <input id="favcolor" name="favcolor" type="color" class="form-control form-control-color" value="#4f46e5" title="เลือกสี">
+                </div>
 
-      <div class="field full">
-        <label for="address">ที่อยู่</label>
-        <textarea id="address" name="address" placeholder="บ้านเลขที่ / หมู่ / ตำบล / อำเภอ / จังหวัด"></textarea>
-      </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label d-block">แนวเพลงที่ชอบ</label>
+                    <div class="checkbox-grid d-flex flex-wrap gap-2">
+                        <div class="form-check">
+                            <input class="form-check-input visually-hidden" type="checkbox" name="music" value="pop" id="musicPop">
+                            <label class="form-check-label" for="musicPop">Pop</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input visually-hidden" type="checkbox" name="music" value="rock" id="musicRock">
+                            <label class="form-check-label" for="musicRock">Rock</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input visually-hidden" type="checkbox" name="music" value="hiphop" id="musicHipHop">
+                            <label class="form-check-label" for="musicHipHop">Hip-hop</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input visually-hidden" type="checkbox" name="music" value="jazz" id="musicJazz">
+                            <label class="form-check-label" for="musicJazz">Jazz</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input visually-hidden" type="checkbox" name="music" value="country" id="musicCountry">
+                            <label class="form-check-label" for="musicCountry">Country</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input visually-hidden" type="checkbox" name="music" value="classical" id="musicClassical">
+                            <label class="form-check-label" for="musicClassical">Classical</label>
+                        </div>
+                    </div>
+                </div>
 
-      <div class="field">
-        <label for="favcolor">สีที่ชอบ</label>
-        <input id="favcolor" name="favcolor" type="color" value="#4f46e5">
-      </div>
+                <div class="col-12 mt-3">
+                    <div class="form-check consent">
+                        <input class="form-check-input" type="checkbox" value="" id="consentCheck" required>
+                        <label class="form-check-label" for="consentCheck">
+                            ข้าพเจ้ายินยอมให้เก็บข้อมูลส่วนบุคคล
+                        </label>
+                    </div>
+                </div>
 
-      <div class="field">
-        <label>แนวเพลงที่ชอบ</label>
-        <div class="checkbox-grid">
-          <label><input type="checkbox" name="music" value="pop"> Pop</label>
-          <label><input type="checkbox" name="music" value="rock"> Rock</label>
-          <label><input type="checkbox" name="music" value="hiphop"> Hip-hop</label>
-          <label><input type="checkbox" name="music" value="jazz"> Jazz</label>
-          <label><input type="checkbox" name="music" value="country"> Country</label>
-          <label><input type="checkbox" name="music" value="classical"> Classical</label>
-        </div>
-      </div>
+                <div class="col-12 mt-3">
+                    <div class="d-flex gap-2 justify-content-end">
+                        <button type="reset" class="btn btn-light border-secondary-subtle px-4 fw-bold">รีเซ็ต</button>
+                        <button type="submit" class="btn btn-primary px-4 fw-bold" style="--bs-btn-bg:#4f46e5; --bs-btn-border-color:#4f46e5;">บันทึก</button>
+                    </div>
+                </div>
 
-      <div class="field full">
-        <label class="consent"><input type="checkbox" name="agree" required> ข้าพเจ้ายินยอมให้เก็บข้อมูลส่วนบุคคล</label>
-      </div>
+            </div>
+        </form>
+    </div>
 
-      <div class="controls full">
-        <button type="reset" class="reset">รีเซ็ต</button>
-        <button type="submit" class="save">บันทึก</button>
-      </div>
-    </form>
-  </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
-
